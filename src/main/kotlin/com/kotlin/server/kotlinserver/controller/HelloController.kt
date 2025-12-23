@@ -1,8 +1,11 @@
 package com.kotlin.server.kotlinserver.controller
 
 import com.kotlin.server.kotlinserver.model.User
+import com.kotlin.server.kotlinserver.model.ResponseResult
+import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -10,9 +13,20 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/auth")
 class HelloController {
 
-    @GetMapping("/login")
-    fun hello(): User {
-        return User(1, "sejun", 25)
+    @Schema(description = "사용자 로그인")
+    @PostMapping("/login")
+    fun postUserLogin(
+        @Schema(description = "사용자 ID", example = "1")
+        username : String,
+        @Schema(description = "사용자 Password", example = "1")
+        password : String
+    ): ResponseResult<User> {
+        return ResponseResult(
+            true,
+            User(1, "alic", 25),
+            200,
+            ""
+        )
     }
 
     @GetMapping("/{id}")
