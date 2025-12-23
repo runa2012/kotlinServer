@@ -1,11 +1,13 @@
 package com.kotlin.server.kotlinserver.controller
 
+import com.kotlin.server.kotlinserver.model.LoginRequest
 import com.kotlin.server.kotlinserver.model.User
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -16,10 +18,8 @@ class HelloController {
     @Schema(description = "사용자 로그인")
     @PostMapping("/login")
     fun postUserLogin(
-        @Schema(description = "사용자 ID", example = "1")
-        username : String,
-        @Schema(description = "사용자 Password", example = "1")
-        password : String
+        @RequestBody request: LoginRequest
+
     ): ResponseResult<User> {
         return ResponseResult(
             true,
