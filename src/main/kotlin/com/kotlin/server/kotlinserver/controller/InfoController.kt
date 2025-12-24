@@ -4,6 +4,7 @@ import com.kotlin.server.kotlinserver.model.request.LoginRequest
 import com.kotlin.server.kotlinserver.model.response.User
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.AuthCodeRequest
+import com.kotlin.server.kotlinserver.model.request.InfoRequest
 import com.kotlin.server.kotlinserver.model.response.AuthCode
 import com.kotlin.server.kotlinserver.model.response.InfoResponse
 import com.kotlin.server.kotlinserver.model.response.PlaceResponse
@@ -24,9 +25,11 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/info")
 class InfoController {
 
-    @GetMapping("/{id}")
-    fun getUser( @PathVariable id : Long ) : InfoResponse? {
-        return when( id ){
+    @PostMapping
+    fun getUser(
+        @RequestBody body : InfoRequest
+    ) : InfoResponse? {
+        return when( body.userId ){
             1L -> InfoResponse(
                 user = User(1, "alic", 25),
                 birthDay = "880808",
