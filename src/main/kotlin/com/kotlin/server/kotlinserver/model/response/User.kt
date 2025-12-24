@@ -9,5 +9,5 @@ data class User(
     @Schema(description = "사용자 이름", example = "이름")
     val name : String,
     @Schema(description = "사용자 나이", example = "25")
-    val age : Int
+    val age : Int,
 )

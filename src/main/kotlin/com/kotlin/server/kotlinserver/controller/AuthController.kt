@@ -5,6 +5,8 @@ import com.kotlin.server.kotlinserver.model.response.User
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.AuthCodeRequest
 import com.kotlin.server.kotlinserver.model.response.AuthCode
+import com.kotlin.server.kotlinserver.model.response.InfoResponse
+import com.kotlin.server.kotlinserver.model.response.PlaceResponse
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.GetMapping
@@ -36,7 +38,6 @@ class AuthController {
         )
     }
 
-
     @Schema(description = "인증번호 요청")
     @PostMapping("/code")
     fun postAuthCode(
@@ -48,18 +49,6 @@ class AuthController {
             200,
             ""
         )
-    }
-
-
-    @GetMapping("/{id}")
-    fun getUser( @PathVariable id : Long ) : User? {
-        return when( id ){
-            1L -> User(1, "alic", 25)
-            2L -> User(2, "test", 21)
-            3L -> User(3, "chilaa", 23)
-            else -> null
-        }
-
     }
 
 }
