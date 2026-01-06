@@ -2,7 +2,7 @@ package com.kotlin.server.kotlinserver.model.response
 
 import io.swagger.v3.oas.annotations.media.Schema
 
-data class PlaceResponse(
+data class WorkerResponse(
     @Schema(description = "이름", example = "홍길동")
     val name : String,
     @Schema(description = "장소 이름", example = "삼성E&A")

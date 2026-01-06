@@ -11,6 +11,6 @@ data class InfoResponse(
     val gender : String,
     @Schema(description = "이미지", example = "https://test.png")
     val profileUrl : String,
-    @Schema(description = "장소 리스트", example = "")
-    val placeList : List<PlaceResponse>,
+    @Schema(description = "근로 정보 리스트", example = "")
+    val workerList : List<WorkerResponse>,
 )

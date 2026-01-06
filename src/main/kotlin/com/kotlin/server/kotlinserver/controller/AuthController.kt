@@ -5,12 +5,8 @@ import com.kotlin.server.kotlinserver.model.response.User
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.AuthCodeRequest
 import com.kotlin.server.kotlinserver.model.response.AuthCode
-import com.kotlin.server.kotlinserver.model.response.InfoResponse
-import com.kotlin.server.kotlinserver.model.response.PlaceResponse
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.tags.Tag
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
