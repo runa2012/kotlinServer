@@ -1,6 +1,5 @@
 package com.kotlin.server.kotlinserver.controller
 
-import com.kotlin.server.kotlinserver.model.response.User
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.AccessRequest
 import com.kotlin.server.kotlinserver.model.response.AccessResponse
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @Tag(
@@ -31,7 +29,7 @@ class AccessController {
                 .status(HttpStatus.OK)
                 .body(
                     ResponseResult(
-                        true,
+                        "true",
                         AccessResponse(
                             areaId = "-4864600466299747104",
                             areaName = "S-1",
@@ -50,7 +48,8 @@ class AccessController {
                                 )
                             )
                         ),
-                        200,
+                        "SUCCESS",
+                        "",
                         ""
                     )
                 )
@@ -58,7 +57,7 @@ class AccessController {
                 .status(HttpStatus.OK)
                 .body(
                     ResponseResult(
-                        true,
+                        "true",
                         AccessResponse(
                             areaId = "-859774497660533536",
                             areaName = "S-2",
@@ -72,7 +71,8 @@ class AccessController {
                                 )
                             )
                         ),
-                        200,
+                        "200",
+                        "",
                         ""
                     )
                 )
@@ -81,7 +81,7 @@ class AccessController {
                     .status(HttpStatus.OK)
                     .body(
                         ResponseResult(
-                            true,
+                            "true",
                             AccessResponse(
                                 areaId = "-5931880499067681568",
                                 areaName = "S-3",
@@ -89,7 +89,8 @@ class AccessController {
                                 inOutDate = "",
                                 workerList = listOf()
                             ),
-                            200,
+                            "SUCCESS",
+                            "",
                             ""
                         )
                     )
@@ -97,7 +98,7 @@ class AccessController {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(
                     ResponseResult(
-                        false,
+                        "false",
                         AccessResponse(
                             areaId = "",
                             areaName = "",
@@ -105,7 +106,8 @@ class AccessController {
                             inOutDate = "",
                             workerList = listOf()
                         ),
-                        401,
+                        "SUCCESS",
+                        "",
                         ""
                     )
                 )

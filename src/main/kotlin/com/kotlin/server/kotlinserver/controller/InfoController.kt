@@ -1,6 +1,6 @@
 package com.kotlin.server.kotlinserver.controller
 
-import com.kotlin.server.kotlinserver.model.response.User
+import com.kotlin.server.kotlinserver.model.response.UserResponse
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.InfoRequest
 import com.kotlin.server.kotlinserver.model.response.InfoResponse
@@ -25,12 +25,12 @@ class InfoController {
     ) : ResponseResult<InfoResponse> {
         return when( body.userId ){
             1L -> ResponseResult(
-                true,
+                "true",
                 InfoResponse(
-                    user = User(1, "홍길동", 25),
+                    user = UserResponse(1, "홍길동", 25),
                     birthDay = "1999-08-08",
                     gender = "M",
-                    profileUrl = "https://i.namu.wiki/i/1YZju6c94ZO4pY2iQjRK5J9iCSN88XueZC1xb9n7BLrU4gsSeYt9G7-_30nL2ZeAGRoACpK6o3Rc5mRwr0hKUw.webp",
+                    profileUrl = "https://www.chosun.com/resizer/v2/TI3SOYYUMNJS63A7YYFA6F4ZF4.jpg?auth=25eeb6691dde903aea040bcd42121290f1101abf6f17062762fc91ac998f84a2&width=616",
                     workerList = listOf(
                         WorkerResponse(
                             name = "홍길동",
@@ -44,19 +44,21 @@ class InfoController {
                         )
                     )
                 ),
-                200,
+                "SUCCESS",
+                "",
                 ""
             )
             else -> ResponseResult(
-                true,
+                "true",
                 InfoResponse(
-                    user = User(0, "", 0),
+                    user = UserResponse(0, "", 0),
                     birthDay = "",
                     gender = "",
                     profileUrl = "",
                     workerList = listOf()
                 ),
-                200,
+                "SUCCESS",
+                "",
                 ""
             )
         }

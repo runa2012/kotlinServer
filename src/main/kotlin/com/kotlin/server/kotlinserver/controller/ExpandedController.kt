@@ -4,7 +4,8 @@ import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.DailyRequest
 import com.kotlin.server.kotlinserver.model.response.DailyResponse
 import com.kotlin.server.kotlinserver.model.response.AreaResponse
-import com.kotlin.server.kotlinserver.model.response.ProjectResponse
+import com.kotlin.server.kotlinserver.model.response.sm.ProjectResponse
+import com.kotlin.server.kotlinserver.model.response.sm.ProjectStageNoListResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -24,13 +25,13 @@ class ExpandedController {
         @RequestBody body : DailyRequest
     ) : ResponseResult<List<DailyResponse>> {
         return ResponseResult (
-            true,
+            "true",
             listOf<DailyResponse>(
                 DailyResponse(
                     name = "홍길동",
                     nationalityName = "한국",
                     gender = "M",
-                    profileUrl = "https://i.namu.wiki/i/1YZju6c94ZO4pY2iQjRK5J9iCSN88XueZC1xb9n7BLrU4gsSeYt9G7-_30nL2ZeAGRoACpK6o3Rc5mRwr0hKUw.webp",
+                    profileUrl = "https://www.cosinkorea.com/data/photos/20240939/art_17276123415305_b398a9.jpg",
                     birthDay = "1999-11-02",
                     checkInDateTime = "1999-01-01 18:01:00",
                     checkOutDateTime = "1999-01-01 22:01:00",
@@ -42,7 +43,7 @@ class ExpandedController {
                     name = "원지안",
                     nationalityName = "한국",
                     gender = "F",
-                    profileUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHcHT8PKA-7PnTUkRIXVdqE177-lGQ5J6pkg&s",
+                    profileUrl = "https://www.chosun.com/resizer/v2/TI3SOYYUMNJS63A7YYFA6F4ZF4.jpg?auth=25eeb6691dde903aea040bcd42121290f1101abf6f17062762fc91ac998f84a2&width=616",
                     birthDay = "1999-01-01",
                     checkInDateTime = "1999-01-01 15:01:00",
                     checkOutDateTime = "1999-01-01 23:01:00",
@@ -51,27 +52,47 @@ class ExpandedController {
                     fieldName = "보통안부"
                 )
             ),
-            200,
+            "SUCCESS",
+            "",
             ""
         )
     }
 
     @PostMapping("/project")
     fun projectList(
-    ) : ResponseResult<List<ProjectResponse>> {
+    ) : ResponseResult<ProjectResponse> {
         return ResponseResult (
-            true,
-            listOf(
-                ProjectResponse(
-                    projectName = "Project A",
-                    projectId = 1
-                ),
-                ProjectResponse(
-                    projectName = "Project B",
-                    projectId = 2
+            "true",
+            ProjectResponse(
+                pjtNo = "PC0007",
+                pjtNm = "Bayer MMDI Project",
+                pjtStgeNo = "PC00070001",
+                pjtStgeNm = "Bayer MMDI Project",
+                projectStageNoList = listOf(
+                    ProjectStageNoListResponse(
+                        pjtNo = "PC0007",
+                        pjtNm = "Bayer MMDI Project",
+                        pjtStgeNo = "PC00070001",
+                        pjtStgeNm = "Bayer MMDI Project",
+                        pjtStgeCd = "Ph1",
+                        pjtStgeBgnYmd = "202511119",
+                        pjtStgeEndYmd = "99991231",
+                        nfcUseYn = "Y"
+                    ),
+                    ProjectStageNoListResponse(
+                        pjtNo = "PC0008",
+                        pjtNm = "Bayer MMDI Project 1",
+                        pjtStgeNo = "PC00070001",
+                        pjtStgeNm = "Bayer MMDI Project 1",
+                        pjtStgeCd = "Ph2",
+                        pjtStgeBgnYmd = "202511120",
+                        pjtStgeEndYmd = "99990131",
+                        nfcUseYn = "Y"
+                    ),
                 ),
             ),
-            200,
+            "SUCCESS",
+            "",
             ""
         )
     }
@@ -80,7 +101,7 @@ class ExpandedController {
     fun areaList(
     ) : ResponseResult<List<AreaResponse>> {
         return ResponseResult (
-            true,
+            "true",
             listOf(
                 AreaResponse(
                     areaId = 1,
@@ -91,7 +112,8 @@ class ExpandedController {
                     areaName = "E-2"
                 ),
             ),
-            200,
+            "SUCCESS",
+            "",
             ""
         )
     }

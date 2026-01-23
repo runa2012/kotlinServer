@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 data class InfoResponse(
 
-    val user : User,
+    val user : UserResponse,
     @Schema(description = "생년월일", example = "880808")
     val birthDay : String,
     @Schema(description = "성별", example = "M")

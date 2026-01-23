@@ -1,10 +1,10 @@
 package com.kotlin.server.kotlinserver.controller
 
 import com.kotlin.server.kotlinserver.model.request.LoginRequest
-import com.kotlin.server.kotlinserver.model.response.User
+import com.kotlin.server.kotlinserver.model.response.UserResponse
 import com.kotlin.server.kotlinserver.model.ResponseResult
 import com.kotlin.server.kotlinserver.model.request.AuthCodeRequest
-import com.kotlin.server.kotlinserver.model.response.AuthCode
+import com.kotlin.server.kotlinserver.model.response.AuthCodeResponse
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,24 +25,39 @@ class AuthController {
     fun postUserLogin(
         @RequestBody request: LoginRequest
 
-    ): ResponseResult<User> {
+    ): ResponseResult<UserResponse> {
         return ResponseResult(
-            true,
-            User(1, "alic", 25),
-            200,
+            "true",
+            UserResponse(1, "alic", 25),
+            "SUCCESS",
+            "",
             ""
         )
     }
+
+//    @Schema(description = "인증번호 요청")
+//    @PostMapping("/code")
+//    fun postAuthCode(
+//        @RequestBody request: AuthCodeRequest
+//    ): ResponseResult<AuthCode> {
+//        return ResponseResult(
+//            true,
+//            AuthCode("123456"),
+//            200,
+//            ""
+//        )
+//    }
 
     @Schema(description = "인증번호 요청")
     @PostMapping("/code")
     fun postAuthCode(
         @RequestBody request: AuthCodeRequest
-    ): ResponseResult<AuthCode> {
+    ): ResponseResult<AuthCodeResponse> {
         return ResponseResult(
-            true,
-            AuthCode(123456),
-            200,
+            "true",
+            AuthCodeResponse("123456"),
+            "ALREADY_EXIST_OTP_ERROR",
+            "",
             ""
         )
     }

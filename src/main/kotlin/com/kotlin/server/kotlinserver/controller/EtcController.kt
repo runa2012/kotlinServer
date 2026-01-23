@@ -22,7 +22,7 @@ class EtcController {
     fun companyList(
     ) : ResponseResult<List<CompanyResponse>> {
         return ResponseResult (
-            true,
+            "true",
             listOf(
                 CompanyResponse(
                     companyName = "두올테크"
@@ -31,7 +31,8 @@ class EtcController {
                     companyName = "삼성전자"
                 )
             ),
-            200,
+            "SUCCESS",
+            "",
             ""
         )
     }
@@ -41,12 +42,13 @@ class EtcController {
         @RequestBody body : VersionRequest
     ) : ResponseResult<VersionResponse> {
         return ResponseResult (
-            true,
+            "true",
             VersionResponse(
                 version = "1.0.1",
                 isForce = false
             ),
-            200,
+            "SUCCESS",
+            "",
             ""
         )
     }
