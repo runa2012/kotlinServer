@@ -10,10 +10,16 @@ data class ProjectResponse(
     val pjtNo : String? = null,
     @Schema(description = "Nm", example = "Bayer MMDI Project")
     val pjtNm : String? = null,
-    @Schema(description = "StgeNo", example = "PC00070001")
+    @Schema(description = "pjtStgeNo", example = "PC00070001")
     val pjtStgeNo : String? = null,
-    @Schema(description = "StgeNm", example = "Bayer MMDI Project")
+    @Schema(description = "pjtStgeCd", example = "PC00070001")
+    val pjtStgeCd : String? = null,
+    @Schema(description = "pjtStgeNm", example = "Bayer MMDI Project")
     val pjtStgeNm : String? = null,
     @Schema(description = "프로젝트 리스트", example = "{}")
     val projectStageNoList : List<ProjectStageNoListResponse>? = null,
+    @Schema(description = "날짜", example = "20271231")
+    val pjtStgeBgnYmd : String? = null,
+    @Schema(description = "날짜", example = "20271231")
+    val pjtStgeEndYmd : String? = null,
 )

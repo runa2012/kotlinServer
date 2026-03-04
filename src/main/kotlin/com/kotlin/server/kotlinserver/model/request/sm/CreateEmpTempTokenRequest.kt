@@ -4,8 +4,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.web.bind.annotation.RequestParam
 
 data class CreateEmpTempTokenRequest(
-    @Schema(description = "성공 여부(1:성공, 2:잘못된 요청, 3:정보가 없습니다.)", example = "1")
-    @RequestParam val test : Int,
     @Schema(description = "유저아이디", example = "bk028.choi@partner.samsung.com")
     @RequestParam val userId : String,
     @Schema(description = "비밀번호", example = "@ch18401778")

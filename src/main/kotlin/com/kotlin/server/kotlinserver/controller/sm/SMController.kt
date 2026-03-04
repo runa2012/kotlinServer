@@ -36,76 +36,49 @@ class SMController {
     fun createEmp(
         @RequestBody body : CreateEmpTempTokenRequest
     ) : ResponseEntity<ResponseResult<EmpTokenTempCreateResponse>> {
-        return when( body.test ){
-            1 -> ResponseEntity
-                .status(HttpStatus.OK)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        EmpTokenTempCreateResponse(
-                            accTknVal = "asdfkljadlfkjasdklfjaslfkj",
-                            succYn = "Y",
-                            project = ProjectResponse(
-                                pjtNo = "PC0007",
-                                pjtNm = "Bayer MMDI Project",
-                                pjtStgeNo = "PC00070001",
-                                pjtStgeNm = "Bayer MMDI Project",
-                                projectStageNoList = listOf(
-                                    ProjectStageNoListResponse(
-                                        pjtNo = "PC0007",
-                                        pjtNm = "Bayer MMDI Project",
-                                        pjtStgeNo = "PC00070001",
-                                        pjtStgeNm = "Bayer MMDI Project",
-                                        pjtStgeCd = "Ph1",
-                                        pjtStgeBgnYmd = "202511119",
-                                        pjtStgeEndYmd = "99991231",
-                                        nfcUseYn = "Y"
-                                    ),
-                                    ProjectStageNoListResponse(
-                                        pjtNo = "PC0008",
-                                        pjtNm = "Bayer MMDI Project 1",
-                                        pjtStgeNo = "PC00070001",
-                                        pjtStgeNm = "Bayer MMDI Project 1",
-                                        pjtStgeCd = "Ph2",
-                                        pjtStgeBgnYmd = "202511120",
-                                        pjtStgeEndYmd = "99990131",
-                                        nfcUseYn = "Y"
-                                    ),
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(
+                ResponseResult(
+                    "/cube_cca/v1/logins/employee/token/temp/create/item",
+                    EmpTokenTempCreateResponse(
+                        accTknVal = "asdfkljadlfkjasdklfjaslfkj",
+                        succYn = "Y",
+                        project = ProjectResponse(
+                            pjtNo = "PC0007",
+                            pjtNm = "Bayer MMDI Project",
+                            pjtStgeNo = "PC00070001",
+                            pjtStgeNm = "Bayer MMDI Project",
+                            projectStageNoList = listOf(
+                                ProjectStageNoListResponse(
+                                    pjtNo = "PC0007",
+                                    pjtNm = "Bayer MMDI Project",
+                                    pjtStgeNo = "PC00070001",
+                                    pjtStgeNm = "Bayer MMDI Project",
+                                    pjtStgeCd = "Ph1",
+                                    pjtStgeBgnYmd = "202511119",
+                                    pjtStgeEndYmd = "99991231",
+                                    nfcUseYn = "Y"
+                                ),
+                                ProjectStageNoListResponse(
+                                    pjtNo = "PC0008",
+                                    pjtNm = "Bayer MMDI Project 1",
+                                    pjtStgeNo = "PC00070001",
+                                    pjtStgeNm = "Bayer MMDI Project 1",
+                                    pjtStgeCd = "Ph2",
+                                    pjtStgeBgnYmd = "202511120",
+                                    pjtStgeEndYmd = "99990131",
+                                    nfcUseYn = "Y"
                                 ),
                             ),
                         ),
-                        "SUCCESS",
-                        "성공",
-                        "2026-01-19T17: 23: 14.135+09:00"
-                    )
+                    ),
+                    "SUCCESS",
+                    "성공",
+                    "2026-01-19T17: 23: 14.135+09:00"
                 )
-            2 -> ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        EmpTokenTempCreateResponse(
-                            userId = "bk0228.choi@partner.samung.com",
-                            userSecret = "@ch18401778",
-                            userCelNo = "01064040054",
-                        ),
-                        "BAD_EMPLOYEE_INFO_ERROR",
-                        "잘못된 정보입니다.",
-                        "2026-01-19T17: 23: 14.135+09:00"
-                    )
-                )
-            else -> ResponseEntity
-                .status(HttpStatus.OK)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        EmpTokenTempCreateResponse( null , null , null , null , null),
-                        "BAD_EMPLOYEE_INFO_ERROR",
-                        "입력하신 임직원 정보가 존재하지 않습니다.",
-                        "2026-01-19T17: 23: 14.135+09:00"
-                    )
-                )
-        }
+            )
+
     }
 
     @Operation(
@@ -115,42 +88,53 @@ class SMController {
     fun userLogout(
         @RequestBody body : LogoutRequest
     ) : ResponseEntity<ResponseResult<List<String>>> {
-        return when( body.test ){
-            1 -> ResponseEntity
-                .status(HttpStatus.OK)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        listOf(),
-                        "SUCCESS",
-                        "성공",
-                        "2026-01-19T17: 23: 14.135+09:00"
-                    )
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(
+                ResponseResult(
+                    "/cube_cca/v1/logins/employee/token/temp/create/item",
+                    listOf(),
+                    "SUCCESS",
+                    "성공",
+                    "2026-01-19T17: 23: 14.135+09:00"
                 )
-            2 -> ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        null,
-                        "UNAUTHORIZED",
-                        "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
-                        "2026-01-19T17: 23: 14.135+09:00",
-                        errMsg = "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
-                    )
-                )
-            else -> ResponseEntity
-                .status(HttpStatus.OK)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        listOf(),
-                        "FORBIDDEN",
-                        "권한이 없습니다.",
-                        "2026-01-19T17: 23: 14.135+09:00"
-                    )
-                )
-        }
+            )
+//        return when( body.test ){
+//            1 -> ResponseEntity
+//                .status(HttpStatus.OK)
+//                .body(
+//                    ResponseResult(
+//                        "/cube_cca/v1/logins/employee/token/temp/create/item",
+//                        listOf(),
+//                        "SUCCESS",
+//                        "성공",
+//                        "2026-01-19T17: 23: 14.135+09:00"
+//                    )
+//                )
+//            2 -> ResponseEntity
+//                .status(HttpStatus.UNAUTHORIZED)
+//                .body(
+//                    ResponseResult(
+//                        "/cube_cca/v1/logins/employee/token/temp/create/item",
+//                        null,
+//                        "UNAUTHORIZED",
+//                        "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
+//                        "2026-01-19T17: 23: 14.135+09:00",
+//                        errMsg = "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
+//                    )
+//                )
+//            else -> ResponseEntity
+//                .status(HttpStatus.OK)
+//                .body(
+//                    ResponseResult(
+//                        "/cube_cca/v1/logins/employee/token/temp/create/item",
+//                        listOf(),
+//                        "FORBIDDEN",
+//                        "권한이 없습니다.",
+//                        "2026-01-19T17: 23: 14.135+09:00"
+//                    )
+//                )
+//        }
     }
 
     @Operation(
@@ -160,47 +144,63 @@ class SMController {
     fun createEmpTemp(
         @RequestBody body : CreateEmpTokenRequest
     ) : ResponseEntity<ResponseResult<EmpTokenCreateResponse>> {
-        return when( body.test ){
-            1 -> ResponseEntity
-                .status(HttpStatus.OK)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        EmpTokenCreateResponse(
-                            accTknVal = "adlkfasdfasdfkjaslfk",
-                            succYn = "Y",
-                            staffType = "SITE_ADMIN",
-                            userType = "GEC_EMPLOYEE",
-                        ),
-                        "SUCCESS",
-                        "성공",
-                        "2026-01-19T17: 23: 14.135+09:00"
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(
+                ResponseResult(
+                    "/cube_cca/v1/logins/employee/token/temp/create/item",
+                    EmpTokenCreateResponse(
+                        accTknVal = "adlkfasdfasdfkjaslfk",
+                        succYn = "Y",
+                        staffType = "SITE_ADMIN",
+                        userType = "GEC_EMPLOYEE",
+                    ),
+                    "SUCCESS",
+                    "성공",
+                    "2026-01-19T17: 23: 14.135+09:00"
                 )
             )
-            2 -> ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        null,
-                        "UNAUTHORIZED",
-                        "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
-                        "2026-01-19T17: 23: 14.135+09:00",
-                        errMsg = "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
-                    )
-                )
-            else -> ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body(
-                    ResponseResult(
-                        "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        EmpTokenCreateResponse( null , null , null , null ),
-                        "UNAUTHORIZED",
-                        "토큰권한이 없습니다.",
-                        "2026-01-19T17: 23: 14.135+09:00"
-                    )
-                )
-        }
+//        when( body.test ){
+//            1 -> ResponseEntity
+//                .status(HttpStatus.OK)
+//                .body(
+//                    ResponseResult(
+//                        "/cube_cca/v1/logins/employee/token/temp/create/item",
+//                        EmpTokenCreateResponse(
+//                            accTknVal = "adlkfasdfasdfkjaslfk",
+//                            succYn = "Y",
+//                            staffType = "SITE_ADMIN",
+//                            userType = "GEC_EMPLOYEE",
+//                        ),
+//                        "SUCCESS",
+//                        "성공",
+//                        "2026-01-19T17: 23: 14.135+09:00"
+//                )
+//            )
+//            2 -> ResponseEntity
+//                .status(HttpStatus.UNAUTHORIZED)
+//                .body(
+//                    ResponseResult(
+//                        "/cube_cca/v1/logins/employee/token/temp/create/item",
+//                        null,
+//                        "UNAUTHORIZED",
+//                        "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
+//                        "2026-01-19T17: 23: 14.135+09:00",
+//                        errMsg = "다른기기에서 로그인되어 앱 사용이 종료됩니다.",
+//                    )
+//                )
+//            else -> ResponseEntity
+//                .status(HttpStatus.UNAUTHORIZED)
+//                .body(
+//                    ResponseResult(
+//                        "/cube_cca/v1/logins/employee/token/temp/create/item",
+//                        EmpTokenCreateResponse( null , null , null , null ),
+//                        "UNAUTHORIZED",
+//                        "토큰권한이 없습니다.",
+//                        "2026-01-19T17: 23: 14.135+09:00"
+//                    )
+//                )
+//        }
     }
 
     @Operation(
@@ -284,7 +284,7 @@ class SMController {
                 .body(
                     ResponseResult(
                         "/cube_cca/v1/logins/employee/token/temp/create/item",
-                        EmpTokenTempCreateResponse( null , null , null , null , null),
+                        null,
                         "BAD_EMPLOYEE_INFO_ERROR",
                         "입력하신 임직원 정보가 존재하지 않습니다.",
                         "2026-01-19T17: 23: 14.135+09:00"
