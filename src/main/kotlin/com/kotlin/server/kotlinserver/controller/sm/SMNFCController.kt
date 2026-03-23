@@ -166,7 +166,7 @@ class SMNFCController {
                             pjtNo = "SE7009",
                             pjtStgeNo = "SE8901231231",
                             pjtStgeCd = "대기방지",
-                            pjtStgeNm = "P4 FAB",
+                            pjtStgeNm = "P5 EAB",
                             pjtStgeBgnYmd = "20251201",
                             pjtStgeEndYmd = "20271231"
                         )
