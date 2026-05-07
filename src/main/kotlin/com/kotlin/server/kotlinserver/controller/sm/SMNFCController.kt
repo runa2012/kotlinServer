@@ -10,6 +10,7 @@ import com.kotlin.server.kotlinserver.model.request.sm.SelectWorkerInfoRequest
 import com.kotlin.server.kotlinserver.model.request.smnfc.AppVersionRequest
 import com.kotlin.server.kotlinserver.model.request.smnfc.NfcAccessLogListRequest
 import com.kotlin.server.kotlinserver.model.request.smnfc.NfcZoneRelatedCardRequest
+import com.kotlin.server.kotlinserver.model.request.smnfc.UpdateContentYnRequest
 import com.kotlin.server.kotlinserver.model.request.smnfc.VendorListRequest
 import com.kotlin.server.kotlinserver.model.request.smnfc.ZoneAccessLogRequest
 import com.kotlin.server.kotlinserver.model.request.smnfc.ZoneListRequest
@@ -88,7 +89,7 @@ class SMNFCController {
     @Operation(
         summary = "휴대폰 번호로 근로자 정보 조회",
     )
-    @PostMapping("/nfc/mobile/selectWorkerByMobileNo")
+    @PostMapping("/nfc/mobile/selectLoginWorkerInfo")
     fun selectWorkerByMobileNo(
         @RequestBody body : SelectWorkerInfoRequest
     ) : ResponseEntity<ResponseResult<List<UserInfoResponse>>> {
@@ -108,7 +109,10 @@ class SMNFCController {
                             lbatMnpwId = 111,
                             photoFileId = "adlfka-asdfa-sdf-dfa",
                             dtb = "1999**11",
-                            gndrCd = "M"
+                            gndrCd = "M",
+                            nfcSrvcTrmsConsYn = "N",
+                            nfcIndvInfmChcConsYn = "N",
+                            nfcIndvInfmEsnConsYn = "N"
                         ),
                         UserInfoResponse(
                             pjtStgeNm = "PC00081",
@@ -118,9 +122,9 @@ class SMNFCController {
                             ocpNm = "현장소장",
                             stdDsplNm = "목수",
                             lbatMnpwId = 111,
-                            photoFileId = "adlfka-asdfa-sdf-dfa",
-                            dtb = "1999**11",
-                            gndrCd = "M"
+                            nfcSrvcTrmsConsYn = "N",
+                            nfcIndvInfmChcConsYn = "N",
+                            nfcIndvInfmEsnConsYn = "N"
                         ),
                         UserInfoResponse(
                             pjtStgeNm = "PC0008",
@@ -154,22 +158,7 @@ class SMNFCController {
                 ResponseResult(
                     "/cube_cca/v1/logins/employee/token/temp/create/item",
                     listOf(
-                        ProjectResponse(
-                            pjtNo = "SE7009",
-                            pjtStgeNo = "SE8901231231",
-                            pjtStgeCd = "에스텍 공용11",
-                            pjtStgeNm = "P4 FAB",
-                            pjtStgeBgnYmd = "20251201",
-                            pjtStgeEndYmd = "20271231"
-                        ),
-                        ProjectResponse(
-                            pjtNo = "SE7009",
-                            pjtStgeNo = "SE8901231231",
-                            pjtStgeCd = "대기방지",
-                            pjtStgeNm = "P5 EAB",
-                            pjtStgeBgnYmd = "20251201",
-                            pjtStgeEndYmd = "20271231"
-                        )
+
                     ),
                     "SUCCESS",
                     "성공",
@@ -192,30 +181,32 @@ class SMNFCController {
                     "/cube_cca/v1/logins/employee/token/temp/create/item",
                     listOf(
                         LogListResponse(
-                            lbatMnpwId = 123123,
+                            lbatMnpwId = "123123",
                             wrkrNm = "고*남",
                             dtb = "1777**03",
+                            gndrCd = "M",
                             vendNm = "Samsung E&A Co.Ltd",
                             pjtStgeNm = "유티동-SECLP00002",
+                            lbatZoneNm = "외부모듈SHop",
                             lbatYmd = "20271231",
-                            attnDtm = "20260122090909",
-                            lvffcDtm = "20260122160909",
-                            ocpNm = "보통안부",
-                            stdDsplNm = "인프라",
-                            empTpCd = "관리자"
+                            attnDtm = "20251224062843",
+                            lvffcDtm = "",
+                            empTpCd = "W",
+                            ocpNm = "유도원",
+                            stdDsplNm = "건축"
                         ),
                         LogListResponse(
-                            lbatMnpwId = 123123,
+                            lbatMnpwId = "123123",
                             wrkrNm = "고*남",
-                            dtb = "1777**03",
                             vendNm = "Samsung E&A Co.Ltd",
                             pjtStgeNm = "유티동-SECLP00002",
+                            lbatZoneNm = "외부모듈SHop",
                             lbatYmd = "20271231",
-                            attnDtm = "20260122090909",
-                            lvffcDtm = "20260123090909",
-                            ocpNm = "안전감시단",
-                            stdDsplNm = "안전",
-                            empTpCd = "기술인"
+                            attnDtm = "20260120090909",
+                            lvffcDtm = "20260120090909",
+                            empTpCd = "W",
+                            ocpNm = "123",
+                            stdDsplNm = "12"
                         )
                     ),
                     "SUCCESS",
@@ -341,6 +332,26 @@ class SMNFCController {
                         lbatZoneNm = "서2",
                         lbatTagDtms = "20250901150000"
                     ),
+                    "SUCCESS",
+                    "성공",
+                    "2026-01-19T17: 23: 14.135+09:00"
+                )
+            )
+    }
+
+    @Operation(
+        summary = "약관 동의",
+    )
+    @PostMapping("/nfc/mobile/updateConsentYn")
+    fun updateConsentYn(
+        @RequestBody body : UpdateContentYnRequest
+    ) : ResponseEntity<ResponseResult<List<String>>> {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(
+                ResponseResult(
+                    "/cube_cca/v1/logins/employee/token/temp/create/item",
+                    listOf(),
                     "SUCCESS",
                     "성공",
                     "2026-01-19T17: 23: 14.135+09:00"

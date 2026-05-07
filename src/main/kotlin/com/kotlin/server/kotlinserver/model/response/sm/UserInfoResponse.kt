@@ -26,4 +26,10 @@ data class UserInfoResponse(
     val dtb : String? = null,
     @Schema(description = "성별", example = "M")
     val gndrCd : String? = null,
+    @Schema(description = "약관", example = "Y")
+    val nfcSrvcTrmsConsYn : String? = null,
+    @Schema(description = "약관", example = "Y")
+    val nfcIndvInfmEsnConsYn : String? = null,
+    @Schema(description = "약관", example = "Y")
+    val nfcIndvInfmChcConsYn : String? = null,
 )
